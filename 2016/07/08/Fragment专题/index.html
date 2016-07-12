@@ -211,6 +211,16 @@ Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -381,16 +391,16 @@ fragment.通过调用addToBackStack(), replace 事务被保存到back stack,因�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/08/Ant打包/" rel="next" title="Ant打包">
-                <i class="fa fa-chevron-left"></i> Ant打包
+              <a href="/2016/07/08/Home键监听/" rel="next" title="Home键监听">
+                <i class="fa fa-chevron-left"></i> Home键监听
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/08/MD5加密/" rel="prev" title="MD5加密">
-                MD5加密 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/08/Bitmap优化/" rel="prev" title="Bitmap优化">
+                Bitmap优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -539,6 +549,14 @@ fragment.通过调用addToBackStack(), replace 事务被保存到back stack,因�
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
+  <script>
+var birthDay = new Date("11/20/2014");
+var now = new Date();
+var duration = now.getTime() - birthDay.getTime();
+var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
 </div>
 
         
