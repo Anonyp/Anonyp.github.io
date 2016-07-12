@@ -266,7 +266,148 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/12/WebView总结/" itemprop="url">
+                  WebView总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-12T21:23:45+08:00" content="2016-07-12">
+              2016-07-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在<code>Android</code>中有<code>WebView Widget</code>，它内置了<code>WebKit</code>引擎，同时，<code>WebKit</code>也是<code>Mac OS X</code>的<code>Safari</code>网页浏览器的基础。<code>WebKit</code>是一个开源的浏览器引擎，<code>Chrome</code>浏览器也是基于它的。所以很多表现<code>WebView</code>和<code>Chrome</code>是一样的。          </p>
+<p>很多文章中多会说在使用<code>WebView</code>之前，要在<code>AndroidManifest.xml</code>中添加 如下权限：<br><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;&gt;&lt;/uses-permission&gt;</code>否则会出<code>Web page not available</code>错误。其实这是不全面的，如果我加载本地的页面是不用该权限的。</p>
+<h2 id="设置WevView要显示的网页方法有很多："><a href="#设置WevView要显示的网页方法有很多：" class="headerlink" title="- 设置WevView要显示的网页方法有很多："></a>- 设置WevView要显示的网页方法有很多：</h2><pre><code>- `mWebView.loadUrl(“http://www.google.com“);` // 网络
+- `mWebView.loadUrl(“file:///android_asset/XX.html“);` // 本地页面,这里的格式是固定的，文件要放到`assets`目录下
+- `mWebview.postUrl(String url, byte[] postData); // 加载页面使用`Post`方式，`postData`为参数`
+
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String postData = <span class="string">"password=password&amp;username=username"</span>;</div><div class="line">mWebview.postUrl(url, EncodingUtils.getBytes(postData, <span class="string">"base64"</span>));</div></pre></td></tr></table></figure>
+
+- mWebView.loadData(htmlString, &quot;text/html&quot;, &quot;utf-8&quot;); // 加载Html数据
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String htmlString = <span class="string">"&lt;h1&gt;Title&lt;/h1&gt;&lt;p&gt;This is HTML text&lt;br /&gt;&lt;i&gt;Formatted in italics&lt;/i&gt;&lt;br /&gt;Anothor Line&lt;/p&gt;"</span>;</div><div class="line">mWebView.loadData(htmlString, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>); <span class="comment">// 加载Html数据</span></div></pre></td></tr></table></figure>
+
+    - `loadData()`不能加载图片内容，如果要加载图片内容或者获得更强大的Web支持请使用`loadDataWithBaseURL()`。
+    - 显示乱码
+        `WebView`一般为了节省资源使用`UTF-8`编码，而`String`类型的数据主要是`Unicode`编码，因此在`loadData()`的时候需要设置相应编码让其将`Unicode`编码转成`UTF-8`但是有些时候设置后还是会出现乱码，这是因为还需要为`WebView`中的
+        `Text`设置编码，
+
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WebView mWebView = (WebView)findViewById(R.id.webview) ;</div><div class="line">String content = getUnicodeContent() ;</div><div class="line">mWebView.getSettings().setDefaultTextEncodingName(“UTF -<span class="number">8</span>”) ;</div><div class="line">mWebView.loadData(content, “text/html”, “UTF-<span class="number">8</span>”) ;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="设置WebView基本信息："><a href="#设置WebView基本信息：" class="headerlink" title="- 设置WebView基本信息："></a>- 设置WebView基本信息：</h2><pre><code> - 如果访问的页面中有`Javascript`，则`webview`必须设置支持`Javascript`。
+    `webview.getSettings().setJavaScriptEnabled(true);  `
+- 触摸焦点起作用
+    `requestFocus() // 如果不设置的话，会出现不能弹出软键盘等问题。`
+- 取消滚动条
+    `this.setScrollBarStyle(SCROLLBARS_OUTSIDE_OVERLAY);`
+</code></pre><h2 id="Back键的处理"><a href="#Back键的处理" class="headerlink" title="- Back键的处理"></a>- Back键的处理</h2><pre><code>如果用`webview`点链接看了很多页以后，如果不做任何处理，点击系统`Back`键，整个浏览器会调用`finish()`而结束自身，如果希望浏览的网页回退而不是退出浏览器，需要在当前`Activity`中处理并消费掉该`Back`事件。
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCoder,KeyEvent event)</span></span>&#123;</div><div class="line"><span class="keyword">if</span>(webView.canGoBack() &amp;&amp; keyCoder == KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">	webview.goBack();   <span class="comment">//goBack()表示返回webView的上一页面</span></div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="WebView中Padding没有效果"><a href="#WebView中Padding没有效果" class="headerlink" title="- WebView中Padding没有效果"></a>- WebView中Padding没有效果</h2><pre><code>`WebView`中使用`Padding`没有效果，我们在`WebView`外层包上一层布局就会有所改进，但是不能完全解决问题，正确的做法是在`WebView`的加载`css`中增加`Padding`
+</code></pre><h2 id="WebViewClient"><a href="#WebViewClient" class="headerlink" title="- WebViewClient"></a>- WebViewClient</h2><pre><code>如果希望点击链接由自己处理，而不是新开`Android`的系统`browser`中响应该链接。给`WebView`添加一个事件监听对象`WebViewClient`并重写其中的一些方法： `shouldOverrideUrlLoading`对网页中超链接按钮的响应。当按下某个连接时`WebViewClient`会调用这个方法，并传递按下的url。
+1. 接收到 Http 请求的事件 
+
+    `onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) `            
+2. 打开链接前的事件
+
+    `public boolean shouldOverrideUrlLoading(WebView view, String url) { view.loadUrl(url); return true; } `           
+    这个函数我们可以做很多操作，比如我们读取到某些特殊的URL，于是就可以不打开地址，取消这个操作，进行预先定义的其他操作，这对一个程序是非常必要的。
+3. 载入页面完成的事件
+
+    `public void onPageFinished(WebView view, String url){ } `              
+    页面载入完成，于是我们可以关闭`loading`条，切换程序动作。
+4. 载入页面开始的事件
+
+    `public void onPageStarted(WebView view, String url, Bitmap favicon)`              
+    这个事件就是开始载入页面调用的，通常我们可以在这设定一个loading的页面，告诉用户程序在等待网络响应。
+</code></pre><hr>
+<ul>
+<li>邮箱 ：xiaopengku@gmail.com  </li>
+<li>Good Luck! </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -473,7 +614,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -796,6 +937,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/08/Home键监听/" itemprop="url">
+                  Home键监听
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ol>
+<li><p>Home键是一个系统的按钮，我们无法通过<code>onKeyDown</code>进行拦截，它是拦截不到的，我们只能得到他在什么时候被按下了。就是通过广播接收者</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/Home键监听/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/08/Android代码混淆/" itemprop="url">
                   Android代码混淆
                 </a>
@@ -990,8 +1228,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Home键监听/" itemprop="url">
-                  Home键监听
+                <a class="post-title-link" href="/2016/07/08/DLNA简介/" itemprop="url">
+                  DLNA
                 </a>
               
             
@@ -1033,205 +1271,10 @@
 
       
         
-          <ol>
-<li><p>Home键是一个系统的按钮，我们无法通过<code>onKeyDown</code>进行拦截，它是拦截不到的，我们只能得到他在什么时候被按下了。就是通过广播接收者</p>
+          <h2 id="一、DLNA简介"><a href="#一、DLNA简介" class="headerlink" title="一、DLNA简介"></a>一、DLNA简介</h2><p><strong>DLNA</strong>成立于<code>2003年6月24日</code>,其前身是<code>DHWG（Digital Home Working Group 数字家庭工作组）</code>，由<code>Sony、Intel、Microsoft</code>等发起成立、旨在解决个人<code>PC</code> ，消费电器，移动设备在内的无线网络和有线网络的互联互通，使得数字媒体和内容服务的无限制的共享和增长成为可能,目前成员公司已达280多家。<code>DLN</code>全称为<code>DIGITAL LIVING NETWORK ALLIANCE</code>， 直译成中文就是“数字生活网络联盟”,其宗旨是<code>Enjoy  your music, photos and videos, anywhere anytime</code>.</p>
+<p>更多内容请访问<a href="http://www.dlna.org">DLNA官网</a><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Home键监听/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Fragment专题/" itemprop="url">
-                  Fragment专题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Fragment简介"><a href="#Fragment简介" class="headerlink" title="Fragment简介"></a>Fragment简介</h1><p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Fragment专题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Android安全退出应用程序/" itemprop="url">
-                  Android安全退出应用程序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>杀死进程。<br> 这种方法是没有效果的只能杀死当前的<code>Activity</code>无法关闭程序，在1.5的时候有用，谷歌设计的时候规定程序不能自杀<code>android.os.Process.killProcess(android.os.Process.myPid())</code>.                                 </li>
-<li>终止当前正在运行的Java虚拟机，导致程序终止.<br> 这种方法也是没有效果的，因为<code>Android</code>用的是<code>dalvik</code>虚拟机<br> <code>System.exit(0);</code></li>
-<li><p>强制关闭与该包有关联的一切执行<br> 这种方法只能杀死别人，无法杀死自己    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Android安全退出应用程序/#more" rel="contents">
+            <a class="btn" href="/2016/07/08/DLNA简介/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1306,7 +1349,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1316,7 +1359,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
