@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="#Fragment简介
-Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一">
+<meta name="description" content="Fragment简介Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fragment专题">
 <meta property="og:url" content="http://yoursite.com/2016/07/08/Fragment专题/index.html">
 <meta property="og:site_name" content="Anonyp">
-<meta property="og:description" content="#Fragment简介
-Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一">
-<meta property="og:updated_time" content="2016-07-11T02:43:30.000Z">
+<meta property="og:description" content="Fragment简介Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个f">
+<meta property="og:updated_time" content="2016-07-12T12:17:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragment专题">
-<meta name="twitter:description" content="#Fragment简介
-Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一">
+<meta name="twitter:description" content="Fragment简介Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个f">
 
 
 
@@ -322,11 +319,9 @@ Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接
       
 
       
-        <p>#Fragment简介</p>
-<p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br><a id="more"></a></p>
-<p>##1. Fragment生命周期<br>    onAttach()Fragment被绑定到Activity时调用 —&gt; onCreate()Fragment创建 –&gt; onCreateView()创建和Fragment关联的View Hierarchy时调用 –&gt; onActivityCreated()Activity的onCreate()方法返回时调用，这前面的四个状态都对应着Activity的Created –&gt; onStart() –&gt; onResume() –&gt; onPause() –&gt; onStop() –&gt; onDestroyView()当和fragment 关联的view hierarchy 正在被移除时调用. 从这个状态开始到最后这三个状态都对应着Activity的Destroyed状态–&gt; onDestroy()Activity的onDestroy执行后的回调, – onDetach()当fragment 从activity 解除关联时被调用.;</p>
-<p>##2. Fragment添加到Activity的两种方式</p>
-<pre><code>1. 布局添加
+        <h1 id="Fragment简介"><a href="#Fragment简介" class="headerlink" title="Fragment简介"></a>Fragment简介</h1><p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br><a id="more"></a></p>
+<h2 id="1-Fragment生命周期"><a href="#1-Fragment生命周期" class="headerlink" title="1. Fragment生命周期"></a>1. Fragment生命周期</h2><pre><code>onAttach()Fragment被绑定到Activity时调用 ---&gt; onCreate()Fragment创建 --&gt; onCreateView()创建和Fragment关联的View Hierarchy时调用 --&gt; onActivityCreated()Activity的onCreate()方法返回时调用，这前面的四个状态都对应着Activity的Created --&gt; onStart() --&gt; onResume() --&gt; onPause() --&gt; onStop() --&gt; onDestroyView()当和fragment 关联的view hierarchy 正在被移除时调用. 从这个状态开始到最后这三个状态都对应着Activity的Destroyed状态--&gt; onDestroy()Activity的onDestroy执行后的回调, -- onDetach()当fragment 从activity 解除关联时被调用.;
+</code></pre><h2 id="2-Fragment添加到Activity的两种方式"><a href="#2-Fragment添加到Activity的两种方式" class="headerlink" title="2. Fragment添加到Activity的两种方式"></a>2. Fragment添加到Activity的两种方式</h2><pre><code>1. 布局添加
     <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">	<span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">	<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">	<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">fragment</span> <span class="attr">android:name</span>=<span class="string">"com.example.news.ArticleListFragment"</span></span></div><div class="line">			<span class="attr">android:id</span>=<span class="string">"@+id/list"</span></div><div class="line">			<span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">			<span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">			<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">fragment</span> <span class="attr">android:name</span>=<span class="string">"com.example.news.ArticleReaderFragment"</span></span></div><div class="line">			<span class="attr">android:id</span>=<span class="string">"@+id/viewer"</span></div><div class="line">			<span class="attr">android:layout_weight</span>=<span class="string">"2"</span></div><div class="line">			<span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">			<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">fragment</span>&gt;</span> 中的android:name 属性指定了在layout 中实例化的Fragment 类.</div></pre></td></tr></table></figure>
 
     **每一个fragment 都需要一个唯一的标识,如果activity重启,系统可以用来恢复fragment(并且你也可以用来捕获fragment 来处理事务,例如移除它.)**
@@ -342,12 +337,14 @@ Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接
 
 3. 添加没有UI的Fragment
     之前的例子展示了对UI 的支持, 如何将一个fragment 添加到activity. 然而,也可以使用fragment 来为activity 提供后台行为而不用展现额外的UI.要添加一个无UI 的fragment, 需要从activity 使用add(Fragment, String) 来添加fragment (为fragment 提供一个唯一的字符串&quot;tag&quot;, 而不是一个view ID).这么做添加了fragment,但因为它没有关联到一个activity layout 中的一个view, 所以不会接收到onCreateView()调用.因此不必实现此方法.为fragment 提供一个字符串tag 并不是专门针对无UI 的fragment的–也可以提供字符串tag 给有UI 的fragment – 但是如果fragment 没有UI,那么这个tag 是仅有的标识它的途径.如果随后你想从activity 获取这个fragment, 需要使用findFragmentByTag().
-</code></pre><p>##3. 管理Fragment<br>    要在activity 中管理fragment,需要使用FragmentManager. 通过调用activity 的getFragmentManager()取得它的实例.<br>可以通过FragmentManager 做一些事情, 包括:</p>
+</code></pre><h2 id="3-管理Fragment"><a href="#3-管理Fragment" class="headerlink" title="3. 管理Fragment"></a>3. 管理Fragment</h2><pre><code>要在activity 中管理fragment,需要使用FragmentManager. 通过调用activity 的getFragmentManager()取得它的实例.
+</code></pre><p>可以通过FragmentManager 做一些事情, 包括:</p>
 <pre><code>1. 使用findFragmentById() (用于在activitylayout 中提供一个UI 的fragment)或findFragmentByTag()(适用于有或没有UI 的fragment)获取activity 中存在的fragment
 2. 将fragment 从后台堆栈中弹出, 使用popBackStack() (模拟用户按下BACK 命令).
 3. 使用addOnBackStackChangeListener()注册一个监听后台堆栈变化的listener.
-</code></pre><p>##4. 处理Fragment事务<br>    每一个事务都是同时要执行的一套变化.可以在一个给定的事务中设置你想执行的所有变化,使用诸如add(), remove(),和replace().然后, 要给activity 应用事务, 必须调用commit().在调用commit()之前, 你可能想调用addToBackStack(),将事务添加到一个fragment 事务的backstack. 这个    </p>
-<pre><code>将一个fragment 替换为另一个, 并在后台堆栈中保留之前的状态:
+</code></pre><h2 id="4-处理Fragment事务"><a href="#4-处理Fragment事务" class="headerlink" title="4. 处理Fragment事务"></a>4. 处理Fragment事务</h2><pre><code>每一个事务都是同时要执行的一套变化.可以在一个给定的事务中设置你想执行的所有变化,使用诸如add(), remove(),和replace().然后, 要给activity 应用事务, 必须调用commit().在调用commit()之前, 你可能想调用addToBackStack(),将事务添加到一个fragment 事务的backstack. 这个    
+
+将一个fragment 替换为另一个, 并在后台堆栈中保留之前的状态:
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create new fragment and transaction</span></div><div class="line">Fragment newFragment = <span class="keyword">new</span> ExampleFragment();</div><div class="line">FragmentTransaction transaction = getFragmentManager().beginTransaction();</div><div class="line"><span class="comment">// Replace whatever is in the fragment_container view with this fragment,</span></div><div class="line"><span class="comment">// and add the transaction to the back stack</span></div><div class="line">transaction.replace(R.id.fragment_container, newFragment);</div><div class="line">transaction.addToBackStack(<span class="keyword">null</span>);</div><div class="line"><span class="comment">// Commit the transaction</span></div><div class="line">transaction.commit();</div></pre></td></tr></table></figure>
 
 在这个例子中, newFragment 替换了当前layout 容器中的由R.id.fragment_container 标识的
@@ -391,16 +388,16 @@ fragment.通过调用addToBackStack(), replace 事务被保存到back stack,因�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/08/Home键监听/" rel="next" title="Home键监听">
-                <i class="fa fa-chevron-left"></i> Home键监听
+              <a href="/2016/07/08/DLNA简介/" rel="next" title="DLNA">
+                <i class="fa fa-chevron-left"></i> DLNA
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/08/Bitmap优化/" rel="prev" title="Bitmap优化">
-                Bitmap优化 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/08/Home键监听/" rel="prev" title="Home键监听">
+                Home键监听 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,7 +511,7 @@ fragment.通过调用addToBackStack(), replace 事务被保存到back stack,因�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment真正的onPause以及onResume"><span class="nav-number">1.</span> <span class="nav-text">Fragment真正的onPause以及onResume</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment简介"><span class="nav-number">1.</span> <span class="nav-text">Fragment简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Fragment生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">1. Fragment生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Fragment添加到Activity的两种方式"><span class="nav-number">1.2.</span> <span class="nav-text">2. Fragment添加到Activity的两种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-管理Fragment"><span class="nav-number">1.3.</span> <span class="nav-text">3. 管理Fragment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-处理Fragment事务"><span class="nav-number">1.4.</span> <span class="nav-text">4. 处理Fragment事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment真正的onPause以及onResume"><span class="nav-number">1.5.</span> <span class="nav-text">Fragment真正的onPause以及onResume</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -549,14 +546,7 @@ fragment.通过调用addToBackStack(), replace 事务被保存到back stack,因�
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
-  <script>
-var birthDay = new Date("11/20/2014");
-var now = new Date();
-var duration = now.getTime() - birthDay.getTime();
-var total= Math.floor(duration / (1000 * 60 * 60 * 24));
-document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
-</script>
-<span id="showDays"></span>
+  
 </div>
 
         
