@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Anonyp">
 <meta property="og:description" content="在Android中有WebView Widget，它内置了WebKit引擎，同时，WebKit也是Mac OS X的Safari网页浏览器的基础。WebKit是一个开源的浏览器引擎，Chrome浏览器也是基于它的。所以很多表现WebView和Chrome是一样的。          
 很多文章中多会说在使用WebView之前，要在AndroidManifest.xml中添加 如下权限：&amp;lt;us">
-<meta property="og:updated_time" content="2016-07-12T13:30:14.000Z">
+<meta property="og:updated_time" content="2016-07-12T13:32:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebView总结">
 <meta name="twitter:description" content="在Android中有WebView Widget，它内置了WebKit引擎，同时，WebKit也是Mac OS X的Safari网页浏览器的基础。WebKit是一个开源的浏览器引擎，Chrome浏览器也是基于它的。所以很多表现WebView和Chrome是一样的。          
@@ -324,6 +324,7 @@
       
         <p>在<code>Android</code>中有<code>WebView Widget</code>，它内置了<code>WebKit</code>引擎，同时，<code>WebKit</code>也是<code>Mac OS X</code>的<code>Safari</code>网页浏览器的基础。<code>WebKit</code>是一个开源的浏览器引擎，<code>Chrome</code>浏览器也是基于它的。所以很多表现<code>WebView</code>和<code>Chrome</code>是一样的。          </p>
 <p>很多文章中多会说在使用<code>WebView</code>之前，要在<code>AndroidManifest.xml</code>中添加 如下权限：<br><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;&gt;&lt;/uses-permission&gt;</code>否则会出<code>Web page not available</code>错误。其实这是不全面的，如果我加载本地的页面是不用该权限的。</p>
+<a id="more"></a>
 <h2 id="设置WevView要显示的网页方法有很多："><a href="#设置WevView要显示的网页方法有很多：" class="headerlink" title="- 设置WevView要显示的网页方法有很多："></a>- 设置WevView要显示的网页方法有很多：</h2><pre><code>- `mWebView.loadUrl(“http://www.google.com“);` // 网络
 - `mWebView.loadUrl(“file:///android_asset/XX.html“);` // 本地页面,这里的格式是固定的，文件要放到`assets`目录下
 - `mWebview.postUrl(String url, byte[] postData); // 加载页面使用`Post`方式，`postData`为参数`
@@ -347,7 +348,7 @@
     `this.setScrollBarStyle(SCROLLBARS_OUTSIDE_OVERLAY);`
 </code></pre><h2 id="Back键的处理"><a href="#Back键的处理" class="headerlink" title="- Back键的处理"></a>- Back键的处理</h2><pre><code>如果用`webview`点链接看了很多页以后，如果不做任何处理，点击系统`Back`键，整个浏览器会调用`finish()`而结束自身，如果希望浏览的网页回退而不是退出浏览器，需要在当前`Activity`中处理并消费掉该`Back`事件。
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCoder,KeyEvent event)</span></span>&#123;</div><div class="line"><span class="keyword">if</span>(webView.canGoBack() &amp;&amp; keyCoder == KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">	webview.goBack();   <span class="comment">//goBack()表示返回webView的上一页面</span></div><div class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+​<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCoder,KeyEvent event)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(webView.canGoBack() &amp;&amp; keyCoder == KeyEvent.KEYCODE_BACK)&#123;</div><div class="line">		webview.goBack();   <span class="comment">//goBack()表示返回webView的上一页面</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"> &#125;</div><div class="line">​</div></pre></td></tr></table></figure>
 </code></pre><h2 id="WebView中Padding没有效果"><a href="#WebView中Padding没有效果" class="headerlink" title="- WebView中Padding没有效果"></a>- WebView中Padding没有效果</h2><pre><code>`WebView`中使用`Padding`没有效果，我们在`WebView`外层包上一层布局就会有所改进，但是不能完全解决问题，正确的做法是在`WebView`的加载`css`中增加`Padding`
 </code></pre><h2 id="WebViewClient"><a href="#WebViewClient" class="headerlink" title="- WebViewClient"></a>- WebViewClient</h2><pre><code>如果希望点击链接由自己处理，而不是新开`Android`的系统`browser`中响应该链接。给`WebView`添加一个事件监听对象`WebViewClient`并重写其中的一些方法： `shouldOverrideUrlLoading`对网页中超链接按钮的响应。当按下某个连接时`WebViewClient`会调用这个方法，并传递按下的url。
 1. 接收到 Http 请求的事件 

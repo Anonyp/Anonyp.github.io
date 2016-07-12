@@ -278,102 +278,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Fragment专题/" itemprop="url">
-                  Fragment专题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Fragment简介"><a href="#Fragment简介" class="headerlink" title="Fragment简介"></a>Fragment简介</h1><p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Fragment专题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/07/08/Ant打包/" itemprop="url">
                   Ant打包
                 </a>
@@ -460,7 +364,7 @@
   
   
 
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -472,8 +376,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Android安全退出应用程序/" itemprop="url">
-                  Android安全退出应用程序
+                <a class="post-title-link" href="/2016/07/08/Bitmap优化/" itemprop="url">
+                  Bitmap优化
                 </a>
               
             
@@ -516,11 +420,106 @@
       
         
           <ol>
-<li>杀死进程。<br> 这种方法是没有效果的只能杀死当前的<code>Activity</code>无法关闭程序，在1.5的时候有用，谷歌设计的时候规定程序不能自杀<code>android.os.Process.killProcess(android.os.Process.myPid())</code>.                                 </li>
-<li>终止当前正在运行的Java虚拟机，导致程序终止.<br> 这种方法也是没有效果的，因为<code>Android</code>用的是<code>dalvik</code>虚拟机<br> <code>System.exit(0);</code></li>
-<li><p>强制关闭与该包有关联的一切执行<br> 这种方法只能杀死别人，无法杀死自己    </p>
+<li>一个进程的内存可以由2个部分组成：<code>native和dalvik</code>，<code>dalvik</code>就是我们平常说的<code>java</code>堆，我们创建的对象是在这里面分配的，而<code>bitmap</code>是直接在<code>native</code>上分配的。<br>一旦内存分配给<code>Java</code>后，以后这块内存即使释放后，也只能给<code>Java</code>的使用，所以如果<code>Java</code>突然占用了一个大块内存，即使很快释放了,<code>C</code>能用的内存也是16M减去<code>Java</code>最大占用的内存数。而<code>Bitmap</code>的生成是通过<code>malloc</code>进行内存分配的，占用的是C的内存，这个也就说明了，上述的4MBitmap无法生成的原因，因为在13M被Java用过后，剩下C能用的只有3M了。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Android安全退出应用程序/#more" rel="contents">
+            <a class="btn" href="/2016/07/08/Bitmap优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/08/Android代码混淆/" itemprop="url">
+                  Android代码混淆
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="混淆器-ProGuard"><a href="#混淆器-ProGuard" class="headerlink" title="混淆器(ProGuard)"></a>混淆器(ProGuard)</h2><p>  混淆器通过删除从未用过的代码和使用晦涩名字重命名类、字段和方法，对代码进行压缩，优化和混淆。结果是一个比较小的.apk文件，该文件比较难进行逆向工程。因此，当你的应用程序对安全敏感（要求高），例如当你授权应用程序的时候，混淆器是一种重要的保护手段。<br>混淆器被集成在android 构建系统中，所以你不必手动调用它。同时混淆器仅在发布模式下进行构建应用程序的时候才会运行起来，所以在调试模式下构建程序时，你不必处理混淆代码。让混淆器运行起来是可选择的，但是推荐选上。</p>
+<p>Android项目中的混淆非常简单，之所以写这篇总结是因为最近发现公司的代码竟然没有混淆，反编译后代码随手可得。非常震惊。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/Android代码混淆/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
