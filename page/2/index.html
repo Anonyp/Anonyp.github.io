@@ -268,8 +268,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Android代码混淆/" itemprop="url">
-                  Android代码混淆
+                <a class="post-title-link" href="/2016/07/08/Home键监听/" itemprop="url">
+                  Home键监听
                 </a>
               
             
@@ -311,10 +311,10 @@
 
       
         
-          <h2 id="混淆器-ProGuard"><a href="#混淆器-ProGuard" class="headerlink" title="混淆器(ProGuard)"></a>混淆器(ProGuard)</h2><p>  混淆器通过删除从未用过的代码和使用晦涩名字重命名类、字段和方法，对代码进行压缩，优化和混淆。结果是一个比较小的.apk文件，该文件比较难进行逆向工程。因此，当你的应用程序对安全敏感（要求高），例如当你授权应用程序的时候，混淆器是一种重要的保护手段。<br>混淆器被集成在android 构建系统中，所以你不必手动调用它。同时混淆器仅在发布模式下进行构建应用程序的时候才会运行起来，所以在调试模式下构建程序时，你不必处理混淆代码。让混淆器运行起来是可选择的，但是推荐选上。</p>
-<p>Android项目中的混淆非常简单，之所以写这篇总结是因为最近发现公司的代码竟然没有混淆，反编译后代码随手可得。非常震惊。<br>
+          <ol>
+<li><p>Home键是一个系统的按钮，我们无法通过<code>onKeyDown</code>进行拦截，它是拦截不到的，我们只能得到他在什么时候被按下了。就是通过广播接收者</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Android代码混淆/#more" rel="contents">
+            <a class="btn" href="/2016/07/08/Home键监听/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -365,8 +365,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Home键监听/" itemprop="url">
-                  Home键监听
+                <a class="post-title-link" href="/2016/07/08/Android代码混淆/" itemprop="url">
+                  Android代码混淆
                 </a>
               
             
@@ -408,10 +408,10 @@
 
       
         
-          <ol>
-<li><p>Home键是一个系统的按钮，我们无法通过<code>onKeyDown</code>进行拦截，它是拦截不到的，我们只能得到他在什么时候被按下了。就是通过广播接收者</p>
+          <h2 id="混淆器-ProGuard"><a href="#混淆器-ProGuard" class="headerlink" title="混淆器(ProGuard)"></a>混淆器(ProGuard)</h2><p>  混淆器通过删除从未用过的代码和使用晦涩名字重命名类、字段和方法，对代码进行压缩，优化和混淆。结果是一个比较小的.apk文件，该文件比较难进行逆向工程。因此，当你的应用程序对安全敏感（要求高），例如当你授权应用程序的时候，混淆器是一种重要的保护手段。<br>混淆器被集成在android 构建系统中，所以你不必手动调用它。同时混淆器仅在发布模式下进行构建应用程序的时候才会运行起来，所以在调试模式下构建程序时，你不必处理混淆代码。让混淆器运行起来是可选择的，但是推荐选上。</p>
+<p>Android项目中的混淆非常简单，之所以写这篇总结是因为最近发现公司的代码竟然没有混淆，反编译后代码随手可得。非常震惊。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Home键监听/#more" rel="contents">
+            <a class="btn" href="/2016/07/08/Android代码混淆/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
