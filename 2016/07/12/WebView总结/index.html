@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Anonyp">
 <meta property="og:description" content="在Android中有WebView Widget，它内置了WebKit引擎，同时，WebKit也是Mac OS X的Safari网页浏览器的基础。WebKit是一个开源的浏览器引擎，Chrome浏览器也是基于它的。所以很多表现WebView和Chrome是一样的。          
 很多文章中多会说在使用WebView之前，要在AndroidManifest.xml中添加 如下权限：&amp;lt;us">
-<meta property="og:updated_time" content="2016-07-12T13:32:44.000Z">
+<meta property="og:updated_time" content="2016-07-13T12:23:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebView总结">
 <meta name="twitter:description" content="在Android中有WebView Widget，它内置了WebKit引擎，同时，WebKit也是Mac OS X的Safari网页浏览器的基础。WebKit是一个开源的浏览器引擎，Chrome浏览器也是基于它的。所以很多表现WebView和Chrome是一样的。          
@@ -198,16 +198,6 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-guestbook">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            留言
           </a>
         </li>
       
@@ -329,22 +319,8 @@
         <p>在<code>Android</code>中有<code>WebView Widget</code>，它内置了<code>WebKit</code>引擎，同时，<code>WebKit</code>也是<code>Mac OS X</code>的<code>Safari</code>网页浏览器的基础。<code>WebKit</code>是一个开源的浏览器引擎，<code>Chrome</code>浏览器也是基于它的。所以很多表现<code>WebView</code>和<code>Chrome</code>是一样的。          </p>
 <p>很多文章中多会说在使用<code>WebView</code>之前，要在<code>AndroidManifest.xml</code>中添加 如下权限：<br><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;&gt;&lt;/uses-permission&gt;</code>否则会出<code>Web page not available</code>错误。其实这是不全面的，如果我加载本地的页面是不用该权限的。</p>
 <a id="more"></a>
-<h2 id="设置WevView要显示的网页方法有很多："><a href="#设置WevView要显示的网页方法有很多：" class="headerlink" title="- 设置WevView要显示的网页方法有很多："></a>- 设置WevView要显示的网页方法有很多：</h2><pre><code>- `mWebView.loadUrl(“http://www.google.com“);` // 网络
-- `mWebView.loadUrl(“file:///android_asset/XX.html“);` // 本地页面,这里的格式是固定的，文件要放到`assets`目录下
-- `mWebview.postUrl(String url, byte[] postData); // 加载页面使用`Post`方式，`postData`为参数`
-
-    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String postData = <span class="string">"password=password&amp;username=username"</span>;</div><div class="line">mWebview.postUrl(url, EncodingUtils.getBytes(postData, <span class="string">"base64"</span>));</div></pre></td></tr></table></figure>
-
-- mWebView.loadData(htmlString, &quot;text/html&quot;, &quot;utf-8&quot;); // 加载Html数据
-    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String htmlString = <span class="string">"&lt;h1&gt;Title&lt;/h1&gt;&lt;p&gt;This is HTML text&lt;br /&gt;&lt;i&gt;Formatted in italics&lt;/i&gt;&lt;br /&gt;Anothor Line&lt;/p&gt;"</span>;</div><div class="line">mWebView.loadData(htmlString, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>); <span class="comment">// 加载Html数据</span></div></pre></td></tr></table></figure>
-
-    - `loadData()`不能加载图片内容，如果要加载图片内容或者获得更强大的Web支持请使用`loadDataWithBaseURL()`。
-    - 显示乱码
-        `WebView`一般为了节省资源使用`UTF-8`编码，而`String`类型的数据主要是`Unicode`编码，因此在`loadData()`的时候需要设置相应编码让其将`Unicode`编码转成`UTF-8`但是有些时候设置后还是会出现乱码，这是因为还需要为`WebView`中的
-        `Text`设置编码，
-
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WebView mWebView = (WebView)findViewById(R.id.webview) ;</div><div class="line">String content = getUnicodeContent() ;</div><div class="line">mWebView.getSettings().setDefaultTextEncodingName(“UTF -<span class="number">8</span>”) ;</div><div class="line">mWebView.loadData(content, “text/html”, “UTF-<span class="number">8</span>”) ;</div></pre></td></tr></table></figure>
-</code></pre><h2 id="设置WebView基本信息："><a href="#设置WebView基本信息：" class="headerlink" title="- 设置WebView基本信息："></a>- 设置WebView基本信息：</h2><pre><code> - 如果访问的页面中有`Javascript`，则`webview`必须设置支持`Javascript`。
+<h2 id="设置WevView要显示的网页方法有很多："><a href="#设置WevView要显示的网页方法有很多：" class="headerlink" title="- 设置WevView要显示的网页方法有很多："></a>- 设置WevView要显示的网页方法有很多：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- `mWebView.loadUrl(“http:<span class="comment">//www.google.com“);` // 网络</span></div><div class="line">- `mWebView.loadUrl(“file:<span class="comment">///android_asset/XX.html“);` // 本地页面,这里的格式是固定的，文件要放到`assets`目录下</span></div><div class="line">- `mWebview.postUrl(String url, <span class="keyword">byte</span>[] postData); <span class="comment">// 加载页面使用`Post`方式，`postData`为参数`</span></div><div class="line">	String postData = <span class="string">"password=password&amp;username=username"</span>;</div><div class="line">	mWebview.postUrl(url, EncodingUtils.getBytes(postData, <span class="string">"base64"</span>));</div><div class="line">- mWebView.loadData(htmlString, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>); <span class="comment">// 加载Html数据</span></div><div class="line">	String htmlString = <span class="string">"&lt;h1&gt;Title&lt;/h1&gt;&lt;p&gt;This is HTML text&lt;br /&gt;&lt;i&gt;Formatted in italics&lt;/i&gt;&lt;br /&gt;Anothor Line&lt;/p&gt;"</span>;</div><div class="line">	mWebView.loadData(htmlString, <span class="string">"text/html"</span>, <span class="string">"utf-8"</span>); <span class="comment">// 加载Html数据</span></div><div class="line">	- `loadData()`不能加载图片内容，如果要加载图片内容或者获得更强大的Web支持请使用`loadDataWithBaseURL()`。</div><div class="line">	- 显示乱码</div><div class="line">	    `WebView`一般为了节省资源使用`UTF-<span class="number">8</span>`编码，而`String`类型的数据主要是`Unicode`编码，因此在`loadData()`的时候需要设置相应编码让其将`Unicode`编码转成`UTF-<span class="number">8</span>`但是有些时候设置后还是会出现乱码，这是因为还需要为`WebView`中的</div><div class="line">		`Text`设置编码，</div><div class="line">		WebView mWebView = (WebView)findViewById(R.id.webview) ;</div><div class="line">		String content = getUnicodeContent() ;</div><div class="line">		mWebView.getSettings().setDefaultTextEncodingName(“UTF -<span class="number">8</span>”) ;</div><div class="line">		mWebView.loadData(content, “text/html”, “UTF-<span class="number">8</span>”) ;</div></pre></td></tr></table></figure>
+<h2 id="设置WebView基本信息："><a href="#设置WebView基本信息：" class="headerlink" title="- 设置WebView基本信息："></a>- 设置WebView基本信息：</h2><pre><code> - 如果访问的页面中有`Javascript`，则`webview`必须设置支持`Javascript`。
     `webview.getSettings().setJavaScriptEnabled(true);  `
 - 触摸焦点起作用
     `requestFocus() // 如果不设置的话，会出现不能弹出软键盘等问题。`
