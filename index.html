@@ -265,6 +265,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/18/Android-Studio-配置指南/" itemprop="url">
+                  Android Studio 配置指南
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-18T08:12:44+08:00" content="2016-11-18">
+              2016-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/18/Android-Studio-配置指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/18/Android-Studio-配置指南/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+本文主要内容来自 Dmytro Danylyk 在 Medium 的文章Configuring Android Studio。在此感谢！虽然使用Android Studio 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/18/Android-Studio-配置指南/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/20/Android Studio自定义打包APK名称/" itemprop="url">
                   Android Studio自定义打包APK名称
                 </a>
@@ -1294,110 +1401,6 @@ export ANDROID_HOME=/Users/peng/android_tools/android/sdkexport PATH=$PATH:$AN
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Bitmap优化/" itemprop="url">
-                  Bitmap优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/08/Bitmap优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Bitmap优化/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>一个进程的内存可以由2个部分组成：<code>native和dalvik</code>，<code>dalvik</code>就是我们平常说的<code>java</code>堆，我们创建的对象是在这里面分配的，而<code>bitmap</code>是直接在<code>native</code>上分配的。<br>一旦内存分配给<code>Java</code>后，以后这块内存即使释放后，也只能给<code>Java</code>的使用，所以如果<code>Java</code>突然占用了一个大块内存，即使很快释放了,<code>C</code>能用的内存也是16M减去<code>Java</code>最大占用的内存数。而<code>Bitmap</code>的生成是通过<code>malloc</code>进行内存分配的，占用的是C的内存，这个也就说明了，上述的4MBitmap无法生成的原因，因为在13M被Java用过后，剩下C能用的只有3M了。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Bitmap优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1443,7 +1446,7 @@ export ANDROID_HOME=/Users/peng/android_tools/android/sdkexport PATH=$PATH:$AN
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
