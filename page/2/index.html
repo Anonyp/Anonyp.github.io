@@ -358,7 +358,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -370,8 +370,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/Fragment专题/" itemprop="url">
-                  Fragment专题
+                <a class="post-title-link" href="/2016/07/08/Android安全退出应用程序/" itemprop="url">
+                  Android安全退出应用程序
                 </a>
               
             
@@ -395,8 +395,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/08/Fragment专题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Fragment专题/" itemprop="commentsCount"></span>
+                <a href="/2016/07/08/Android安全退出应用程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Android安全退出应用程序/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -420,9 +420,12 @@
 
       
         
-          <h1 id="Fragment简介"><a href="#Fragment简介" class="headerlink" title="Fragment简介"></a>Fragment简介</h1><p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br>
+          <ol>
+<li>杀死进程。<br> 这种方法是没有效果的只能杀死当前的<code>Activity</code>无法关闭程序，在1.5的时候有用，谷歌设计的时候规定程序不能自杀<code>android.os.Process.killProcess(android.os.Process.myPid())</code>.                                 </li>
+<li>终止当前正在运行的Java虚拟机，导致程序终止.<br> 这种方法也是没有效果的，因为<code>Android</code>用的是<code>dalvik</code>虚拟机<br> <code>System.exit(0);</code></li>
+<li><p>强制关闭与该包有关联的一切执行<br> 这种方法只能杀死别人，无法杀死自己    </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Fragment专题/#more" rel="contents">
+            <a class="btn" href="/2016/07/08/Android安全退出应用程序/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -669,112 +672,6 @@
   
   
 
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/Android安全退出应用程序/" itemprop="url">
-                  Android安全退出应用程序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/08/Android安全退出应用程序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Android安全退出应用程序/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>杀死进程。<br> 这种方法是没有效果的只能杀死当前的<code>Activity</code>无法关闭程序，在1.5的时候有用，谷歌设计的时候规定程序不能自杀<code>android.os.Process.killProcess(android.os.Process.myPid())</code>.                                 </li>
-<li>终止当前正在运行的Java虚拟机，导致程序终止.<br> 这种方法也是没有效果的，因为<code>Android</code>用的是<code>dalvik</code>虚拟机<br> <code>System.exit(0);</code></li>
-<li><p>强制关闭与该包有关联的一切执行<br> 这种方法只能杀死别人，无法杀死自己    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/Android安全退出应用程序/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -841,6 +738,109 @@
 <p>Android项目中的混淆非常简单，之所以写这篇总结是因为最近发现公司的代码竟然没有混淆，反编译后代码随手可得。非常震惊。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/08/Android代码混淆/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/08/Fragment专题/" itemprop="url">
+                  Fragment专题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T10:47:47+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/08/Fragment专题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/Fragment专题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Fragment简介"><a href="#Fragment简介" class="headerlink" title="Fragment简介"></a>Fragment简介</h1><p>Fragment 必须总是被嵌入到一个activity 中, 它们的生命周期直接被其所属的宿主,activity 的生命周期影响.例如, 当activity 被暂停,那么在其中的所有fragment 也被暂停; 当activity 被销毁,所有隶属于它的fragment 也被销毁. 然而,当一个activity 正在运行时(处于resumed 状态),我们可以独立地操作每一个fragment, 比如添加或删除它们. 将一个fragment 作为activity 布局的一部分添加进来时, 它处在activity 的viewhierarchy中的ViewGroup 中,并且定义有它自己的view 布局.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/08/Fragment专题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
